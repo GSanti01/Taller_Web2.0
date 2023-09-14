@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos</title>
+</head>
+<body>
+    <h2>Datos de Usuario</h2>
+    <form>
+        <label for="fname"><strong>Nombre:</strong></label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname"><strong>Apellidos:</strong></label><br>
+        <input type="text" id="lname" name="lname"><br>
+        <label for="Pass"><strong>Contraseña:</strong></label><br>
+        <input type="text" id="Pass" name="Pass"><br>
+        <label for="Cpass"><strong>Confirmar Contraseña:</strong></label><br>
+        <input type="text" id="Cpass" name="Cpass"><br>
+    </form>
+
+    <form>
+        <label for="doc"><strong>Identificación:</strong></label><br>
+           <select id="doc" name="doc">
+           <option value="ti">T.I</option>
+           <option value="cc">C.C</option>
+           </select>
+           <input type="text" id="doc" name="doc"><br><br>       
+    </form>
+    
+    <form>
+        <label for="sexo"><strong>Sexo:</strong></label><br>
+         <input type="radio" id="h" name="sexo" value="hombre">
+         <label for="h">Hombre</label><br>
+         <input type="radio" id="m" name="sexo" value="mujer">
+         <label for="m">Mujer</label><br><br>
+         <label for="foto"><strong>Incluir mi foto:</strong></label><br>
+         <label for="archivo"></label>
+         <input type="file" id="archivo" name="archivo">
+         <br><br>
+         <label for="estu"><strong>Estudiante:</strong></label><br><br>
+    </form>
+    
+    <form>
+        <fieldset>
+            <legend><strong>Datos personales:</strong></legend>
+            <label for="departamento"><strong>Selecciona un departamento:</strong></label><br>
+            <input list="departamentos" name="departamento">
+            <datalist id="departamentos">
+    <option value="Amazonas">
+    <option value="Antioquia">
+    <option value="Arauca">
+    <option value="Atlántico">
+    <option value="Bolívar">
+    <option value="Boyacá">
+    <option value="Caldas">
+    <option value="Caquetá">
+    <option value="Casanare">
+    <option value="Cauca">
+    <option value="Cesar">
+    <option value="Chocó">
+    <option value="Córdoba">
+    <option value="Cundinamarca">
+    <option value="Guainía">
+    <option value="Guaviare">
+    <option value="Huila">
+    <option value="La Guajira">
+    <option value="Magdalena">
+    <option value="Meta">
+    <option value="Nariño">
+    <option value="Norte de Santander">
+    <option value="Putumayo">
+    <option value="Quindío">
+    <option value="Risaralda">
+    <option value="San Andrés y Providencia">
+    <option value="Santander">
+    <option value="Sucre">
+    <option value="Tolima">
+    <option value="Valle del Cauca">
+    <option value="Vaupés">
+    <option value="Vichada">
+            </datalist><br>
+            <label for="date"><strong>Fecha de nacimiento:</strong></label><br>
+            <input type="text" id="date" name="date">
+            <label for="d">de:</label>
+            <input list="meses" name="d">
+            <datalist id="meses">
+    <option value="Enero">
+    <option value="Febrero">
+    <option value="Marzo">
+    <option value="Abril">
+    <option value="Mayo">
+    <option value="Junio">
+    <option value="Julio">
+    <option value="Agosto">
+    <option value="Septiembre">
+    <option value="Octubre">
+    <option value="Noviembre">
+    <option value="Diciembre">
+            </datalist>
+            <label for="d2">de:</label>
+            <input type="text" id="d2" name="d2"><br>
+
+
+            <label for="temas"><strong>Temas de interés:</strong></label><br>
+            <select id="temas" name="temas" size="6" multiple>
+    <option value="admin">Administración de bases de datos</option>
+    <option value="ana">Análisis y programación</option>
+    <option value="arq">Arquitectura de computadoras</option>
+    <option value="cal">Calidad de software</option>
+    <option value="erp">ERP, CRM, Business Intelligence</option>
+    <option value="seg">Seguridad informática</option>
+    <option value="redes">Redes de computadoras</option>
+    <option value="ia">Inteligencia artificial</option>
+    <option value="iot">Internet de las cosas (IoT)</option>
+    <option value="bd">Big Data</option>
+    <option value="ml">Aprendizaje automático (Machine Learning)</option>
+            </select>
+        </fieldset><br>
+        <button type="button" onclick="window.location.href='Lista.html'">Guardar cambios</button> 
+        <button type="button" id="borrarDatos">Borrar datos</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Obtén una referencia al botón "Borrar datos"
+            const botonBorrar = document.getElementById('borrarDatos');
+            
+            // Agrega un controlador de eventos para el clic en el botón
+            botonBorrar.addEventListener('click', function () {
+                // Obtén todos los formularios en la página
+                const forms = document.querySelectorAll('form');
+                
+                // Recorre todos los formularios y restablece sus valores
+                forms.forEach(function(form) {
+                    form.reset();
+                });
+                
+                // Deselecciona todos los valores en campos de selección múltiple
+                const selectMultiple = document.querySelectorAll('select[multiple]');
+                selectMultiple.forEach(function (select) {
+                    for (let i = 0; i < select.options.length; i++) {
+                        select.options[i].selected = false;
+                    }
+                });
+            });
+        });
+    </script>
+
+<style>
+    /* Aplica estilos personalizados al fieldset */
+    fieldset {
+        max-width: 400px; /* Establece un ancho máximo */
+        padding: 20px; /* Agrega espacio interno para separar el contenido */
+    }
+</style>
+</body>
+</html>
